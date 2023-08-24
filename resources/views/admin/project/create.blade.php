@@ -35,6 +35,15 @@
                         @enderror 
                     </div>
                     <div class="form-group p-3">
+                        <label class="control-label">Tipo di Progetto</label>
+                        <select name="type_id" id="type_id" value="{{ $project->type_id->id }}" class="form-control">
+                            <option value="" disabled @if ()selected @endif>Seleziona un tipo</option>
+                            @foreach ($types as $item)
+                                <option value="{{$item->id}}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group p-3">
                         <label class="control-label">Immagine</label>
                         <input class="form-control @error('image') is-invalid @enderror" type="file" name="image" id="image">
                     </div>

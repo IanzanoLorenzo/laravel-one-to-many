@@ -7,7 +7,7 @@
             <h2 class="fs-4 text-secondary text-capitalize my-5">
                 Modifica Progetto
             </h2>
-            <div class="card">
+            <div class="form-control">
                 <form action="{{route('admin.project.update', $project)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
@@ -31,6 +31,15 @@
                         @error('creator_name')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror 
+                    </div>
+                    <div class="form-group p-3">
+                        <label class="control-label">Tipo di Progetto</label>
+                        <select name="type_id" id="type_id" value="{{ old('type_id') ?? $project->type_id }}" class="form-control">
+                            <option value="" disabled selected>Seleziona un tipo</option>
+                            @foreach ($types as $item)
+                                <option value="{{$item->id}}">{{ $item->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group p-3">
                         <label class="control-label">Immagine</label>
