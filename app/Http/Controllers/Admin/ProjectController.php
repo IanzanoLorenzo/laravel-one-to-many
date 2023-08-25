@@ -33,7 +33,7 @@ class ProjectController extends Controller
     public function create()
     {
         $types = Type::all();
-        return view('admin.project.create', compact('$types'));
+        return view('admin.project.create', compact('types'));
     }
 
     /**
