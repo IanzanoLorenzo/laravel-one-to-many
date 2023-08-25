@@ -26,6 +26,26 @@
                 </div>
             </div>
         </div>
+        <div class="col-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <a href="{{ route('admin.type.index') }}" class="btn card-header h5">Tipi</a>
+                        <div class="list-group list-group-flush">
+                            @foreach ($types as $type)                        
+                            <a href="{{ route('admin.type.show', $type ) }}" class="list-group-item list-group-item-action"><strong class="me-3">#{{$type->id}}</strong>{{$type->name}}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 text-center">
+                    <a href="{{ route('admin.type.index') }}" class="btn btn-primary mt-4">Lista dei tipi</a>
+                </div>
+                <div class="col-6 text-center">
+                    <a href="{{ route('admin.type.create') }}" class="btn btn-success mt-4">Nuovo tipo</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

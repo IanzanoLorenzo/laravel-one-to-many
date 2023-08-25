@@ -8,12 +8,16 @@
     <div class="card">
         <div class="card-header h5">Author: {{$project->creator_name}}</div>
         <div class="card-body">
-            {{-- <p>Tipo: {{ $type->name }}</p> --}}
             <p class="fs-5">
                 {{$project->description}}
             </p>
-            <img src="{{ asset('storage/'.$project->image) ?? ''}}" alt="immagine non trovata">
-            <p class="fs-6">
+            @if ($project->type_id !== null)
+                <p class="fs-5">Tipo: {{ $type->name }}</p>
+            @endif
+            @if ($project->image !== null)
+                <img src="{{ asset('storage/'.$project->image) ?? ''}}" alt="immagine non trovata">
+            @endif
+            <p class="fs-5">
                 {{$project->creation_date}}
             </p>
             <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-success my-3">Modifica il Progetto</a>

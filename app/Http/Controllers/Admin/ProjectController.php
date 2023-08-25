@@ -7,6 +7,7 @@ use App\models\Type;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -54,7 +55,7 @@ class ProjectController extends Controller
         $project = new Project();
         $project->fill($form_data);
         $project->creation_date = date('Y-m-d');
-        $project->project_name_slug = $project->toSlug($form_data['project_name']);
+        $project->project_name_slug = Str::slug($form_data['project_name'], '-');
         $project->save();
 
         return redirect()->route('admin.project.show', $project);
@@ -69,7 +70,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.project.show', compact('project'));
+        $type = Type::find($project->type_id);
+        return view('admin.project.show', compact('project', 'type'));
     }
 
     /**
@@ -103,7 +105,7 @@ class ProjectController extends Controller
             $form_data['image'] = $path;
         }
 
-        $form_data['project_name_slug'] = $project->toSlug($form_data['project_name']);
+        $form_data['project_name_slug'] = Str::slug($form_data['project_name'], '-');
 
         $project->update($form_data);
 
