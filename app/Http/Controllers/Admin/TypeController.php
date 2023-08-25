@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Type;
+use App\Models\Admin\Type;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class TypeController extends Controller
 {
@@ -14,7 +16,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.type.show');
     }
 
     /**
@@ -24,7 +26,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

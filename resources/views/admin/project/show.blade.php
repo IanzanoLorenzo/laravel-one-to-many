@@ -8,6 +8,7 @@
     <div class="card">
         <div class="card-header h5">Author: {{$project->creator_name}}</div>
         <div class="card-body">
+            {{-- <p>Tipo: {{ $type->name }}</p> --}}
             <p class="fs-5">
                 {{$project->description}}
             </p>
