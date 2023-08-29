@@ -24,6 +24,7 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
+            'type_id' => 'required|exists:types,id',
             'project_name' => 'required|max:50',
             'description' => 'required|max:255',
             'creator_name' => 'required|max:50',
@@ -34,6 +35,8 @@ class UpdateProjectRequest extends FormRequest
     public function messages()
     {
         return [
+            'type_id.required' => 'Il campo "Tipo" è obbligatorio',
+            'type_id.exists' => 'Il campo selezionato non esiste',
             'project_name.required' => 'Il campo "Nome Progetto" è obbligatorio',
             'project_name.max' => 'Il campo "Nome Progetto" non può superare i :max caratteri',
             'description.required' => 'Il campo "Descrizione" è obbligatorio',
